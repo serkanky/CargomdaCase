@@ -1,0 +1,42 @@
+﻿@model List<Entity.Concrete.Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="col-sm-12 col-xl-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Ürün İşlemleri</h6>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Ürün Açıklaması</th>
+                    <th scope="col">Ürün Stok Durumu</th>
+                    <th scope="col">Ürün Fiyatı</th>
+                    <th scope="col">Ürün Kategorisi</th>
+                    <th scope="col">Sil</th>
+                    <th scope="col">Güncelle</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.ProductId</th>
+                        <td>@item.ProductName</td>
+                        <td>@item.Description</td>
+                        <td>@item.UnitsInStock</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@item.CategoryId</td>
+                        <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-outline-danger">Sil</a></td>
+                        <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-outline-success">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a href="/Product/AddProduct/" class="btn btn-outline-info">Yeni Ürün Girişi</a>
+    </div>
+</div>
+

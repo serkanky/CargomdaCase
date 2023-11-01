@@ -1,0 +1,42 @@
+﻿@model List<Entity.Concrete.Product>
+
+@{
+    var productsToDisplay = Model.Take(5).ToList();
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Son Ürün Kayıtları</h6>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">Ürün Adı</th>
+                        <th scope="col">Ürün Fotoğrafı</th>
+                        <th scope="col">Ürün Stok</th>
+                        <th scope="col">Ürün Fiyatı</th>
+                        <th scope="col">Ürün Açıklaması</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in productsToDisplay)
+                    {
+                        <tr>
+                            <td><input class="form-check-input" type="checkbox"></td>
+                            <td>@item.ProductName</td>
+                            <td>
+                                <img src="@item.ProductImage" alt="@item.ProductName" width="100" height="100">
+                            </td>
+                            <td>@item.UnitsInStock</td>
+                            <td>@item.UnitPrice TL</td>
+                            <td>@item.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

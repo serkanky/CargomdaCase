@@ -1,0 +1,44 @@
+﻿@model Entity.Concrete.SubCategory
+@{
+    ViewData["Title"] = "UpdateSubCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="bg-light rounded h-100 p-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Alt Kategori Güncelleme</h6>
+        <form method="post">
+            @if (ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-warning">
+                    Gerekli Tüm Alanları Doldurunuz.
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    Alt Kategori güncellenirken hata oluştu. Lütfen tüm alanları doldurun.
+                </div>
+            }
+            <div class="mb-3">
+                <label for="subcategoryname" class="form-label">Alt Kategori Adı</label>
+                <input type="text" class="form-control" id="subcategoryname" asp-for="SubcategoryName" />
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("SubcategoryName"))
+                {
+                    <span class="text-danger">@Html.ValidationMessage("SubcategoryName")</span>
+                }
+            </div>
+            <div class="form-group">
+                <label for="Status">Alt Kategori Durumu:</label>
+                <select class="form-control" id="Status" name="Status">
+                    <option value="true">Aktif</option>
+                    <option value="false">Pasif</option>
+                </select>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </form>
+    </div>
+</div>
+
+

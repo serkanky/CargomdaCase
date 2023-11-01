@@ -1,0 +1,72 @@
+﻿@model Entity.Concrete.Product
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="bg-light rounded h-100 p-4">
+    <h6 class="mb-4">Yeni Ürün Ekleme</h6>
+    <form method="post">
+        @if (ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-warning">
+                Gerekli tüm alanları doldurunuz.
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                Ürün eklenirken hata oluştu. Lütfen tüm alanları doldurun.
+            </div>
+        }
+        <div class="mb-3">
+            <label for="productname" class="form-label">Ürün Başlığı</label>
+            <input type="text" class="form-control" id="productname" asp-for="ProductName" />
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("ProductName"))
+            {
+                <span class="text-danger">@Html.ValidationMessage("ProductName")</span>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="productimage" class="form-label">Ürün Fotoğrafı</label>
+            <input type="text" class="form-control" id="productimage" asp-for="ProductImage" />
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("ProductImage"))
+            {
+                <span class="text-danger">@Html.ValidationMessage("ProductImage")</span>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="productstock" class="form-label">Stok Miktarı</label>
+            <input type="text" class="form-control" id="productstock" asp-for="UnitsInStock" />
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("UnitsInStock"))
+            {
+                <span class="text-danger">@Html.ValidationMessage("UnitsInStock")</span>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="productprice" class="form-label">Fiyat</label>
+            <input type="text" class="form-control" id="productprice" asp-for="UnitPrice" />
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("UnitPrice"))
+            {
+                <span class="text-danger">@Html.ValidationMessage("UnitPrice")</span>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="productcategory" class="form-label">Kategori</label>
+            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+        </div>
+        <div class="mb-3">
+            <label for="subcategory" class="form-label">Alt Kategori</label>
+            @Html.DropDownListFor(x => x.SubcategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+        </div>
+        <div class="mb-3">
+            <label for="productdescription" class="form-label">Ürün Açıklaması</label>
+            <input type="text" class="form-control" id="productdescription" asp-for="Description" />
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey("Description"))
+            {
+                <span class="text-danger">@Html.ValidationMessage("Description")</span>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>

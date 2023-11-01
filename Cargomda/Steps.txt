@@ -1,0 +1,25 @@
+Proje Tanýmý 
+
+Bir online satýþ sistemi için kategori, alt kategori ve ürün yönetimi. 
+Sayfalar
+
+•	Üye giriþi             //TAMAMLANDI
+•	Kategori Yönetimi (Kategori ve alt kategorilerin oluþturulduðu) 
+•	Ürün Listesi          //TAMAMLANDI
+•	Ürün Ekleme          //TAMAMLANDI
+Açýklamalar
+•	Her kategoriye sýnýrsýz sayýda alt kategori eklenebilir.
+•	Menünün ve diðer araçlarýn bulunduðu bir layout page kullanýlmalý //TAMAMLANDI
+•	Ürün ve kategori için  tüm crud iþlemleri yapýlabilmeli           //TAMAMLANDI
+Dikkat Edilmesi Gerekenler
+•	Database tasarýmý
+•	Programlama dilinin etkin kullanýlmasý
+•	Performans
+•	Açýklama satýrlarý
+•	Data Access için Ef Core (Tercihen)                              //TAMAMLANDI
+•	Katmanlý Mimari Yapýsý
+•	Ürün listelemede cache kullanýlmasý
+•	Hata kontrolleri ve loglama, 404 yönlendirme
+
+UI tamamen sizin insiyatifinizde, butonlarýn nerede bulunacaðý, menü, form tasarýmý gibi.
+
