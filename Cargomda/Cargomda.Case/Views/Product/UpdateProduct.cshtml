@@ -8,6 +8,7 @@
     <div class="bg-light rounded h-100 p-4">
         <h6 class="mb-4">Ürün Güncelleme</h6>
         <form method="post">
+            <input type="hidden" class="form-control" id="CategoryId" asp-for="CategoryId" />
             <div class="mb-3">
                 <input type="hidden" class="form-control" asp-for="ProductId" />
                 <label for="productname" class="form-label">Ürün Adı</label>
@@ -26,12 +27,10 @@
                 <input type="text" class="form-control" asp-for="UnitPrice" />
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Kategori</label>
-                @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
-            </div>
-            <div class="mb-3">
-                <label for="subcategory" class="form-label">Alt Kategori</label>
-                @Html.DropDownListFor(x => x.SubcategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+                <label for="productcategory" class="form-label">Kategori</label>
+                <div id="dvDropDawnList">
+                    <select id="ddlMainCategory" class="ddlCategory" category-no="1"></select>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Ürün Açıklaması</label>
@@ -42,5 +41,136 @@
         </form>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<script>
+    getMainCategory();
 
+    function getMainCategory() {
+        $.ajax({
+            url: "/Category/GetMainCategories",
+            type: "GET",
+            success: function (data) {
+                $("#ddlMainCategory").append('<option value="-1">Seçiniz...</option>');
+                $.each(data, function (index, item) {
+                    $("#ddlMainCategory").append($('<option>', {
+                        value: item.categoryId,
+                        text: item.categoryName
+                    }));
+                });
+            }
+        });
+    }
 
+    function fnGetir(x) {
+        var parentCategoryId = x;
+        $("#CategoryId").val(parentCategoryId);
+        $.ajax({
+            url: "/Category/GetSubCategories",
+            data: { parentCategoryId: parentCategoryId },
+            type: "GET",
+            success: function (data) {
+                if (data.length > 0) {
+                    var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                    $.each(data, function (index, item) {
+                        htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                    });
+                    htm += "</select>";
+                    $("#dvDropDawnList").append(htm);
+                }
+                else {
+                    //hidden bir alanda categori id yaz;  x içine doldur form post olduğunda id kategori id olacak
+                    $("#selectedCategoryId").val(parentCategoryId);
+                }
+            }
+        });
+    }
+
+    $(function () {
+        $('select').change(function () {
+            var parentCategoryId = $(this).val();
+            $.ajax({
+                url: "/Category/GetSubCategories",
+                data: { parentCategoryId: parentCategoryId },
+                type: "GET",
+                success: function (data) {
+                    var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                    $.each(data, function (index, item) {
+                        htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                    });
+                    htm += "</select>";
+                    $("#dvDropDawnList").append(htm);
+                }
+            });
+        });
+    });
+</script>
+@*<script>
+    $(function () {
+        // İlk yüklemede ana kategorileri al
+        getMainCategory();
+    
+        $('#ddlMainCategory').change(function () {
+            var parentCategoryId = $(this).val();
+            console.log(parentCategoryId);
+            fnGetir(parentCategoryId);
+            
+        });
+        $('select').change(function () {
+            var parentCategoryId = $(this).val();
+            $.ajax({
+                url: "/Category/GetSubCategories",
+                data: { parentCategoryId: parentCategoryId },
+                type: "GET",
+                success: function (data) {
+                    var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                    $.each(data, function (index, item) {
+                        htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                    });
+                    htm += "</select>";
+                    $("#dvDropDawnList").append(htm);
+                }
+            });
+        });
+        function fnGetir(x) {
+            var parentCategoryId = x;
+            
+            $.ajax({
+                url: "/Category/GetSubCategories",
+                data: { parentCategoryId: parentCategoryId },
+                type: "GET",
+                success: function (data) {
+                    console.log(data);
+                    if (data.length > 0) {
+                        var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                        $.each(data, function (index, item) {
+                            htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                        });
+                        htm += "</select>";
+                        $("#dvDropDawnList").append(htm); // Her alt kategori seçimi için yeni bir `select` ekler
+                    }
+                    else {
+                        // hidden bir alanda kategori id'sini yaz; x içine doldur, form gönderildiğinde id, kategori id'si olacak
+                        $("#selectedCategoryId").val(parentCategoryId);
+                    }
+                }
+            });
+        }
+        function getMainCategory() {
+            $.ajax({
+                url: "/Category/GetMainCategories",
+                type: "GET",
+                success: function (data) {
+                    $("#ddlMainCategory").append('<option value="-1">Seçiniz...</option>');
+                    $.each(data, function (index, item) {
+                        $("#ddlMainCategory").append($('<option>', {
+                            value: item.categoryId,
+                            text: item.categoryName
+                        }));
+                    });
+                }
+            });
+        }
+    });
+</script>*@

@@ -19,6 +19,7 @@
                 Ürün eklenirken hata oluştu. Lütfen tüm alanları doldurun.
             </div>
         }
+        <input type="hidden" class="form-control" id="CategoryId" asp-for="CategoryId" />
         <div class="mb-3">
             <label for="productname" class="form-label">Ürün Başlığı</label>
             <input type="text" class="form-control" id="productname" asp-for="ProductName" />
@@ -52,12 +53,11 @@
             }
         </div>
         <div class="mb-3">
+           
             <label for="productcategory" class="form-label">Kategori</label>
-            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
-        </div>
-        <div class="mb-3">
-            <label for="subcategory" class="form-label">Alt Kategori</label>
-            @Html.DropDownListFor(x => x.SubcategoryId, (List<SelectListItem>)ViewBag.v1, new { @class = "form-control" })
+            <div id="dvDropDawnList">
+                <select id="ddlMainCategory" class="ddlCategory" category-no="1"></select>
+            </div>
         </div>
         <div class="mb-3">
             <label for="productdescription" class="form-label">Ürün Açıklaması</label>
@@ -70,3 +70,71 @@
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+<script>
+    getMainCategory();
+
+    function getMainCategory() {
+        $.ajax({
+            url: "/Category/GetMainCategories",
+            type: "GET",
+            success: function (data) {
+                $("#ddlMainCategory").append('<option value="-1">Seçiniz...</option>');
+                $.each(data, function (index, item) {
+                    $("#ddlMainCategory").append($('<option>', {
+                        value: item.categoryId,
+                        text: item.categoryName
+                    }));
+                });
+            }
+        });
+    }
+
+    function fnGetir(x) {
+        var parentCategoryId = x;
+        $("#CategoryId").val(parentCategoryId);
+        $.ajax({
+            url: "/Category/GetSubCategories",
+            data: { parentCategoryId: parentCategoryId },
+            type: "GET",
+            success: function (data) {
+                if (data.length > 0) {
+                    var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                    $.each(data, function (index, item) {
+                        htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                    });
+                    htm += "</select>";
+                    $("#dvDropDawnList").append(htm);
+                }
+                else{
+                        //hidden bir alanda categori id yaz;  x içine doldur form post olduğunda id kategori id olacak
+                    $("#selectedCategoryId").val(parentCategoryId);
+                }
+            }
+                  
+                
+        });
+    }
+
+    $(function () {
+        $('select').change(function () {
+            var parentCategoryId = $(this).val();
+            $.ajax({
+                url: "/Category/GetSubCategories",
+                data: { parentCategoryId: parentCategoryId },
+                type: "GET",
+                success: function (data) {
+                    var htm = "<select class='ddlCategory' onchange='fnGetir($(this).val())'><option value='-1'>Seçiniz...</option>";
+                    $.each(data, function (index, item) {
+                        htm += '<option value="' + item.categoryId + '">' + item.categoryName + '</option>';
+                    });
+                    htm += "</select>";
+                    $("#dvDropDawnList").append(htm);
+                }
+            });
+        });
+    });
+</script>

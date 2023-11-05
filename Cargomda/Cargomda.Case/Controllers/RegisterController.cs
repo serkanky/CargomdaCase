@@ -19,7 +19,8 @@ namespace Cargomda.UI.Controllers
 
         #endregion
 
-        #region Index
+
+        #region Index 
         [HttpGet]
         public IActionResult Index()
         {
@@ -33,7 +34,10 @@ namespace Cargomda.UI.Controllers
                 return View();
             }
         }
-        
+        #endregion
+
+
+        #region Index POST
         [HttpPost]
         public async Task<IActionResult> Index(RegisterViewModel model)
         {
@@ -57,7 +61,7 @@ namespace Cargomda.UI.Controllers
                 }
                 else
                 {
-                    //Başarısız olursa hata kullanıcıya gösterir ve hataları düzeltmesi beklenir.
+                    //Başarısız olursa hatayı gösterir düzeltmesi beklenir.
                     foreach (var item in result.Errors)
                     {
                         ModelState.AddModelError("", item.Description);

@@ -8120,3 +8120,174 @@ Error Number:208,State:1,Class:16
 2023-11-01 23:09:33.476 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.5625ms
 2023-11-01 23:09:33.483 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
 2023-11-01 23:09:33.501 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.9655ms
+2023-11-01 23:53:06.625 +03:00  INF  User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-11-01 23:53:06.719 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-11-01 23:53:06.720 +03:00  INF  Hosting environment: Development
+2023-11-01 23:53:06.720 +03:00  INF  Content root path: C:\Users\PC\Desktop\CargomdaCase\Cargomda\Cargomda.Case\
+2023-11-01 23:53:06.735 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/ - -
+2023-11-01 23:53:07.747 +03:00  INF  AuthenticationScheme: Identity.Application signed out.
+2023-11-01 23:53:07.748 +03:00  INF  AuthenticationScheme: Identity.External signed out.
+2023-11-01 23:53:07.748 +03:00  INF  AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2023-11-01 23:53:07.751 +03:00  INF  Identity.Application was not authenticated. Failure message: No principal.
+2023-11-01 23:53:07.754 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:07.761 +03:00  INF  Route matched with {action = "Index", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Cargomda.UI.Controllers.LoginController (Cargomda.UI).
+2023-11-01 23:53:07.766 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:53:07.845 +03:00  INF  Executed ViewResult - view Index executed in 78.6432ms.
+2023-11-01 23:53:07.847 +03:00  INF  Executed action Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI) in 85.2569ms
+2023-11-01 23:53:07.847 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:07.872 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/ - - - 200 - text/html;+charset=utf-8 1140.3281ms
+2023-11-01 23:53:07.885 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:07.889 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.5957ms
+2023-11-01 23:53:07.919 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:07.954 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 35.3084ms
+2023-11-01 23:53:11.188 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Register/Index/ - -
+2023-11-01 23:53:11.190 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI)'
+2023-11-01 23:53:11.191 +03:00  INF  Route matched with {action = "Index", controller = "Register"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Cargomda.UI.Controllers.RegisterController (Cargomda.UI).
+2023-11-01 23:53:11.194 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:53:11.209 +03:00  INF  Executed ViewResult - view Index executed in 15.8516ms.
+2023-11-01 23:53:11.209 +03:00  INF  Executed action Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI) in 17.924ms
+2023-11-01 23:53:11.209 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI)'
+2023-11-01 23:53:11.212 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Register/Index/ - - - 200 - text/html;+charset=utf-8 23.2831ms
+2023-11-01 23:53:11.226 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:11.227 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.6293ms
+2023-11-01 23:53:11.231 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:11.252 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.6466ms
+2023-11-01 23:53:11.286 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Register/Index/img/favicon.ico - -
+2023-11-01 23:53:11.289 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.ErrorPageController.NotFound (Cargomda.UI)'
+2023-11-01 23:53:11.296 +03:00  INF  Route matched with {action = "NotFound", controller = "ErrorPage"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult NotFound(Int32) on controller Cargomda.UI.Controllers.ErrorPageController (Cargomda.UI).
+2023-11-01 23:53:11.302 +03:00  INF  Executing ViewResult, running view NotFound.
+2023-11-01 23:53:11.309 +03:00  INF  Executed ViewResult - view NotFound executed in 7.5357ms.
+2023-11-01 23:53:11.309 +03:00  INF  Executed action Cargomda.UI.Controllers.ErrorPageController.NotFound (Cargomda.UI) in 13.5782ms
+2023-11-01 23:53:11.309 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.ErrorPageController.NotFound (Cargomda.UI)'
+2023-11-01 23:53:11.310 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Register/Index/img/favicon.ico - - - 404 - text/html;+charset=utf-8 23.9346ms
+2023-11-01 23:53:31.042 +03:00  INF  Request starting HTTP/2 POST https://localhost:44369/Register/Index/ application/x-www-form-urlencoded 274
+2023-11-01 23:53:31.043 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI)'
+2023-11-01 23:53:31.047 +03:00  INF  Route matched with {action = "Index", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Cargomda.UI.Models.RegisterViewModel) on controller Cargomda.UI.Controllers.RegisterController (Cargomda.UI).
+2023-11-01 23:53:31.265 +03:00  INF  Kullanıcı kaydı başarıyla oluşturuldu: mete
+2023-11-01 23:53:31.272 +03:00  INF  Executing RedirectResult, redirecting to /.
+2023-11-01 23:53:31.273 +03:00  INF  Executed action Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI) in 225.8271ms
+2023-11-01 23:53:31.273 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.RegisterController.Index (Cargomda.UI)'
+2023-11-01 23:53:31.273 +03:00  INF  Request finished HTTP/2 POST https://localhost:44369/Register/Index/ application/x-www-form-urlencoded 274 - 302 - - 231.4718ms
+2023-11-01 23:53:31.276 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/ - -
+2023-11-01 23:53:31.277 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:31.277 +03:00  INF  Route matched with {action = "Index", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Cargomda.UI.Controllers.LoginController (Cargomda.UI).
+2023-11-01 23:53:31.277 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:53:31.279 +03:00  INF  Executed ViewResult - view Index executed in 2.024ms.
+2023-11-01 23:53:31.279 +03:00  INF  Executed action Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI) in 2.2652ms
+2023-11-01 23:53:31.279 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:31.280 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/ - - - 200 - text/html;+charset=utf-8 3.8754ms
+2023-11-01 23:53:31.294 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:31.295 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.6563ms
+2023-11-01 23:53:31.316 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:31.334 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.1588ms
+2023-11-01 23:53:36.387 +03:00  INF  Request starting HTTP/2 POST https://localhost:44369/ application/x-www-form-urlencoded 216
+2023-11-01 23:53:36.388 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:36.390 +03:00  INF  Route matched with {action = "Index", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index(Cargomda.UI.Models.LoginViewModel) on controller Cargomda.UI.Controllers.LoginController (Cargomda.UI).
+2023-11-01 23:53:36.469 +03:00  INF  AuthenticationScheme: Identity.Application signed in.
+2023-11-01 23:53:36.470 +03:00  INF  Kullanıcı girişi başarıyla gerçekleşti: mete
+2023-11-01 23:53:36.470 +03:00  INF  Executing RedirectResult, redirecting to /Dashboard.
+2023-11-01 23:53:36.470 +03:00  INF  Executed action Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI) in 79.9731ms
+2023-11-01 23:53:36.470 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.LoginController.Index (Cargomda.UI)'
+2023-11-01 23:53:36.470 +03:00  INF  Request finished HTTP/2 POST https://localhost:44369/ application/x-www-form-urlencoded 216 - 302 - - 83.2810ms
+2023-11-01 23:53:36.474 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Dashboard - -
+2023-11-01 23:53:36.476 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.DashboardController.Index (Cargomda.UI)'
+2023-11-01 23:53:36.477 +03:00  INF  Route matched with {action = "Index", controller = "Dashboard"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Cargomda.UI.Controllers.DashboardController (Cargomda.UI).
+2023-11-01 23:53:36.477 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:53:36.558 +03:00  INF  Executed ViewResult - view Index executed in 81.0904ms.
+2023-11-01 23:53:36.558 +03:00  INF  Executed action Cargomda.UI.Controllers.DashboardController.Index (Cargomda.UI) in 81.311ms
+2023-11-01 23:53:36.558 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.DashboardController.Index (Cargomda.UI)'
+2023-11-01 23:53:36.560 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Dashboard - - - 200 - text/html;+charset=utf-8 86.3342ms
+2023-11-01 23:53:36.575 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:36.575 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.6814ms
+2023-11-01 23:53:36.581 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:36.600 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 18.8964ms
+2023-11-01 23:53:40.349 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category/Index/ - -
+2023-11-01 23:53:40.350 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.CategoryController.Index (Cargomda.UI)'
+2023-11-01 23:53:40.351 +03:00  INF  Route matched with {action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Cargomda.UI.Controllers.CategoryController (Cargomda.UI).
+2023-11-01 23:53:40.355 +03:00  INF  Kategori listesi başarıyla çekildi.
+2023-11-01 23:53:40.355 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:53:40.359 +03:00  INF  Executed ViewResult - view Index executed in 3.8642ms.
+2023-11-01 23:53:40.359 +03:00  INF  Executed action Cargomda.UI.Controllers.CategoryController.Index (Cargomda.UI) in 8.1806ms
+2023-11-01 23:53:40.359 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.CategoryController.Index (Cargomda.UI)'
+2023-11-01 23:53:40.360 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category/Index/ - - - 200 - text/html;+charset=utf-8 11.3793ms
+2023-11-01 23:53:40.375 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:40.375 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.5606ms
+2023-11-01 23:53:40.382 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:40.402 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.5874ms
+2023-11-01 23:53:41.252 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category/AddCategory/ - -
+2023-11-01 23:53:41.253 +03:00  INF  Executing endpoint 'Cargomda.UI.Controllers.CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:53:41.254 +03:00  INF  Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCategory() on controller Cargomda.UI.Controllers.CategoryController (Cargomda.UI).
+2023-11-01 23:53:41.254 +03:00  INF  Executing ViewResult, running view AddCategory.
+2023-11-01 23:53:41.261 +03:00  INF  Executed ViewResult - view AddCategory executed in 7.2428ms.
+2023-11-01 23:53:41.261 +03:00  INF  Executed action Cargomda.UI.Controllers.CategoryController.AddCategory (Cargomda.UI) in 7.5125ms
+2023-11-01 23:53:41.261 +03:00  INF  Executed endpoint 'Cargomda.UI.Controllers.CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:53:41.262 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category/AddCategory/ - - - 200 - text/html;+charset=utf-8 10.5361ms
+2023-11-01 23:53:41.278 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:53:41.278 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.6305ms
+2023-11-01 23:53:41.286 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:53:41.307 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.2730ms
+2023-11-01 23:56:35.476 +03:00  INF  User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-11-01 23:56:35.560 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-11-01 23:56:35.560 +03:00  INF  Hosting environment: Development
+2023-11-01 23:56:35.560 +03:00  INF  Content root path: C:\Users\PC\Desktop\CargomdaCase\Cargomda\Cargomda.Case\
+2023-11-01 23:56:35.573 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category/AddCategory/ - -
+2023-11-01 23:56:35.679 +03:00  INF  Executing endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:56:35.689 +03:00  INF  Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCategory() on controller CategoryController (Cargomda.UI).
+2023-11-01 23:56:35.694 +03:00  INF  Executing ViewResult, running view AddCategory.
+2023-11-01 23:56:35.774 +03:00  INF  Executed ViewResult - view AddCategory executed in 79.6366ms.
+2023-11-01 23:56:35.777 +03:00  INF  Executed action CategoryController.AddCategory (Cargomda.UI) in 87.5733ms
+2023-11-01 23:56:35.777 +03:00  INF  Executed endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:56:35.798 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category/AddCategory/ - - - 200 - text/html;+charset=utf-8 227.0887ms
+2023-11-01 23:56:35.807 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:56:35.812 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.6840ms
+2023-11-01 23:56:35.822 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:56:35.845 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.7822ms
+2023-11-01 23:57:52.308 +03:00  INF  User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-11-01 23:57:52.383 +03:00  INF  Application started. Press Ctrl+C to shut down.
+2023-11-01 23:57:52.383 +03:00  INF  Hosting environment: Development
+2023-11-01 23:57:52.383 +03:00  INF  Content root path: C:\Users\PC\Desktop\CargomdaCase\Cargomda\Cargomda.Case\
+2023-11-01 23:57:52.396 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category/AddCategory/ - -
+2023-11-01 23:57:52.501 +03:00  INF  Executing endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:52.510 +03:00  INF  Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCategory() on controller CategoryController (Cargomda.UI).
+2023-11-01 23:57:52.515 +03:00  INF  Executing ViewResult, running view AddCategory.
+2023-11-01 23:57:52.591 +03:00  INF  Executed ViewResult - view AddCategory executed in 75.4841ms.
+2023-11-01 23:57:52.593 +03:00  INF  Executed action CategoryController.AddCategory (Cargomda.UI) in 82.1213ms
+2023-11-01 23:57:52.593 +03:00  INF  Executed endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:52.611 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category/AddCategory/ - - - 200 - text/html;+charset=utf-8 217.3955ms
+2023-11-01 23:57:52.621 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:57:52.625 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 2.2836ms
+2023-11-01 23:57:52.628 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:57:52.650 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.0805ms
+2023-11-01 23:57:55.492 +03:00  INF  Request starting HTTP/2 POST https://localhost:44369/Category/AddCategory/ application/x-www-form-urlencoded 276
+2023-11-01 23:57:55.497 +03:00  INF  Executing endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:55.508 +03:00  INF  Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCategory(Entity.Concrete.Category) on controller CategoryController (Cargomda.UI).
+2023-11-01 23:57:56.331 +03:00  INF  Kategori ekleme işlemi başarıyla tamamlandı.
+2023-11-01 23:57:56.337 +03:00  INF  Executing RedirectResult, redirecting to /Category.
+2023-11-01 23:57:56.337 +03:00  INF  Executed action CategoryController.AddCategory (Cargomda.UI) in 829.5186ms
+2023-11-01 23:57:56.337 +03:00  INF  Executed endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:56.338 +03:00  INF  Request finished HTTP/2 POST https://localhost:44369/Category/AddCategory/ application/x-www-form-urlencoded 276 - 302 - - 845.3422ms
+2023-11-01 23:57:56.341 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category - -
+2023-11-01 23:57:56.349 +03:00  INF  Executing endpoint 'CategoryController.Index (Cargomda.UI)'
+2023-11-01 23:57:56.349 +03:00  INF  Route matched with {action = "Index", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller CategoryController (Cargomda.UI).
+2023-11-01 23:57:56.488 +03:00  INF  Kategori listesi başarıyla çekildi.
+2023-11-01 23:57:56.489 +03:00  INF  Executing ViewResult, running view Index.
+2023-11-01 23:57:56.496 +03:00  INF  Executed ViewResult - view Index executed in 7.2957ms.
+2023-11-01 23:57:56.496 +03:00  INF  Executed action CategoryController.Index (Cargomda.UI) in 146.5579ms
+2023-11-01 23:57:56.496 +03:00  INF  Executed endpoint 'CategoryController.Index (Cargomda.UI)'
+2023-11-01 23:57:56.497 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category - - - 200 - text/html;+charset=utf-8 155.9177ms
+2023-11-01 23:57:56.512 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:57:56.513 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.7866ms
+2023-11-01 23:57:56.519 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:57:56.539 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 19.3873ms
+2023-11-01 23:57:59.728 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/Category/AddCategory/ - -
+2023-11-01 23:57:59.730 +03:00  INF  Executing endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:59.730 +03:00  INF  Route matched with {action = "AddCategory", controller = "Category"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddCategory() on controller CategoryController (Cargomda.UI).
+2023-11-01 23:57:59.730 +03:00  INF  Executing ViewResult, running view AddCategory.
+2023-11-01 23:57:59.732 +03:00  INF  Executed ViewResult - view AddCategory executed in 2.53ms.
+2023-11-01 23:57:59.732 +03:00  INF  Executed action CategoryController.AddCategory (Cargomda.UI) in 2.7099ms
+2023-11-01 23:57:59.732 +03:00  INF  Executed endpoint 'CategoryController.AddCategory (Cargomda.UI)'
+2023-11-01 23:57:59.734 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/Category/AddCategory/ - - - 200 - text/html;+charset=utf-8 5.3740ms
+2023-11-01 23:57:59.746 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - -
+2023-11-01 23:57:59.747 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_framework/aspnetcore-browser-refresh.js - - - 200 11992 application/javascript;+charset=utf-8 0.6015ms
+2023-11-01 23:57:59.761 +03:00  INF  Request starting HTTP/2 GET https://localhost:44369/_vs/browserLink - -
+2023-11-01 23:57:59.779 +03:00  INF  Request finished HTTP/2 GET https://localhost:44369/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.7813ms

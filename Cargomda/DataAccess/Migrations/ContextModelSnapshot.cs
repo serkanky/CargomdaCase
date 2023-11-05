@@ -135,6 +135,10 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
+                    b.Property<string>("CategoryDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -142,7 +146,12 @@ namespace DataAccess.Migrations
                     b.Property<bool>("CategoryStatus")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("int");
+
                     b.HasKey("CategoryId");
+
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -170,9 +179,6 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SubcategoryId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -184,31 +190,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.SubCategory", b =>
-                {
-                    b.Property<int>("SubcategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubcategoryId"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SubcategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SubcategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("SubCategories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -314,26 +295,24 @@ namespace DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Entity.Concrete.Category", b =>
+                {
+                    b.HasOne("Entity.Concrete.Category", "ParentCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
+                });
+
             modelBuilder.Entity("Entity.Concrete.Product", b =>
                 {
-                    b.HasOne("Entity.Concrete.Category", "Category")
+                    b.HasOne("Entity.Concrete.Category", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.SubCategory", b =>
-                {
-                    b.HasOne("Entity.Concrete.Category", "Category")
-                        .WithMany("Subcategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -390,8 +369,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entity.Concrete.Category", b =>
                 {
                     b.Navigation("Products");
-
-                    b.Navigation("Subcategories");
                 });
 #pragma warning restore 612, 618
         }

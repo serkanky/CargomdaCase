@@ -1,15 +1,17 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Concrete;
 using DataAccess.Repositories;
 using Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.EntityFramework
 {
     public class EfProductDal : GenericRepository<Product>, IProductDal
     {
+
+        public List<Product> GetProductsByCategory(int categoryId)
+        {
+            Context context = new Context();
+            return context.Products.Where(p => p.CategoryId == categoryId).ToList();
+        }
     }
 }

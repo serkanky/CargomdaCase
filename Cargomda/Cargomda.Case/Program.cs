@@ -5,7 +5,9 @@ using DataAccess.Concrete;
 using DataAccess.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Redis.Cache;
 using Serilog;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,19 +27,25 @@ var logger = new LoggerConfiguration()             //Log Structure ayarlarý
   .Enrich.FromLogContext()
   .CreateLogger();
 
-builder.Logging.ClearProviders();
+
+string redisConnectionString = builder.Configuration.GetSection("CacheOptions")["Url"]; // builder.Configuration ile Configuration'a eriþin
+
+var redis = ConnectionMultiplexer.Connect(redisConnectionString);
+builder.Services.AddSingleton<RedisService>(sp => new RedisService(redis.GetDatabase()));
+
+
+builder.Logging.ClearProviders();    //Loglama varsayýlaný kaldýrýr. 
+
 builder.Logging.AddSerilog(logger); //Serilog günlük yönetimi yetkilendirme.
 
 builder.Services.AddDbContext<Context>();  //Ef Core veritabaný sýnýfý belirtme.
 
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();                    //Veritabaný iþlemleri için servis eklemeleri. Veirtabaný katmaný ile uygulama katmaný iletiþimi.
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();                    // Dependency Injection. Veritabaný iþlemleri için servis eklemeleri. Veirtabaný katmaný ile uygulama katmaný iletiþimi.
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
 builder.Services.AddScoped<IProductDal, EfProductDal>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 
-builder.Services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
-builder.Services.AddScoped<ISubCategoryService, SubCategoryManager>();
 
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();            //Kimlik doðrulama ayarlarý.
 

@@ -24,7 +24,7 @@ namespace Cargomda.UI.Controllers
 
         #region Index
         [HttpGet]
-        //Index login sayfasını içeriyor.
+        //Index login sayfası.
         public IActionResult Index()
         {
             return View();
@@ -34,7 +34,7 @@ namespace Cargomda.UI.Controllers
         //user bilgileri, LoginViewModel sınıfından alınıyor.
         public async Task<IActionResult> Index(LoginViewModel loginViewModel)
         {
-            // giriş için await _signInManager.PasswordSignInAsync metodu kullanılır. Giriş başarılıysa, kullanıcı Dashboard sayfasına yönlendiriliyor
+            // giriş için await _signInManager.PasswordSignInAsync metodu kullanılıyor. Giriş başarılıysa, Dashboard sayfasına yönlendiriliyor
             //Başarılı - Başarısız olması durumunda kayıt(log) tutulur.
             try
             {
@@ -66,6 +66,10 @@ namespace Cargomda.UI.Controllers
             {
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 _logger.LogInformation("Kullanıcı başarıyla çıkış yaptı");
+                foreach (var cookie in Request.Cookies.Keys)
+                {
+                    Response.Cookies.Delete(cookie);
+                }
             }
             catch (Exception ex)
             {

@@ -1,27 +1,24 @@
 ﻿using Business.Abstract;
 using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Serilog;
-using System;
-using System.Linq;
 
 namespace Cargomda.UI.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         #region Constructor
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly ILogger<ProductController> _logger;
-        private readonly ISubCategoryService _subCategoryService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, ILogger<ProductController> logger, ISubCategoryService subCategoryService)
+        public ProductController(IProductService productService, ICategoryService categoryService, ILogger<ProductController> logger)
         {
             _productService = productService;
             _categoryService = categoryService;
             _logger = logger;
-            _subCategoryService = subCategoryService;
         }
 
         #endregion
@@ -38,13 +35,13 @@ namespace Cargomda.UI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex, "Ürün listesi çekerken bir hata oluştu.");
+                _logger.LogInformation(ex, "Ürün listesini çekerken bir hata oluştu.");
                 return View();
             }
         }
         #endregion
 
-        # region AddProduct
+        #region AddProduct
         [HttpGet]
         //AddProduct ürün ekleme işlemlerimizi yönetiyor.
         public IActionResult AddProduct()
@@ -52,22 +49,14 @@ namespace Cargomda.UI.Controllers
             //ViewBag ile values ve values1 verileri atadım. Bu şekilde ürünü hangi kategoriye ve alt kategoriye atayacağımızı seçebiliyoruz.
             try
             {
-                List<SelectListItem> values = (from x in _categoryService.TGetList() 
-                                               select new SelectListItem 
-                                               { 
-                                                   Text = x.CategoryName, 
-                                                   Value = x.CategoryId.ToString() 
-                                               }).ToList();
-
-                List<SelectListItem> values1 = (from x in _subCategoryService.TGetList()
-                                                select new SelectListItem
-                                                {
-                                                    Text = x.SubcategoryName,
-                                                    Value = x.SubcategoryId.ToString()
-                                                }).ToList();
+               List<SelectListItem> values = (from x in _categoryService.TGetList()
+                                              select new SelectListItem
+                                              {
+                                                  Text = x.CategoryName,
+                                                  Value = x.CategoryId.ToString()
+                                              }).ToList();
+              
                 ViewBag.v = values;
-                ViewBag.v1 = values1;
-
                 _logger.LogInformation("Ürün ekleme sayfası açıldı.");
                 return View();
             }
@@ -118,40 +107,50 @@ namespace Cargomda.UI.Controllers
 
         #endregion
 
-        #region UpdateProduct
+        #region UpdateProduct GET
+
         [HttpGet]
         public IActionResult UpdateProduct(int id)
         {
 
-            //veriler List<SelectListItem> ile alınıyor ve liste "values" adı altında ViewBag aracılığıyla görünüme taşınıyor. Dropdown oluşturmak için kullandım.
             try
             {
-                List<SelectListItem> values = (from x in _productService.TGetList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.ProductName,
-                                                   Value = x.ProductId.ToString()
-                                               }).ToList();
-                List<SelectListItem> values1 = (from x in _subCategoryService.TGetList()
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.SubcategoryName,
-                                                   Value = x.SubcategoryId.ToString()
-                                               }).ToList();
+                // Tüm kategoriler
+                var allCategories = _categoryService.TGetList();
 
-                ViewBag.v = values;
-                ViewBag.v1 = values1;
-                var value = _productService.TGetByID(id);
-                _logger.LogInformation($"Ürün güncelleme sayfası açıldı: {value.ProductName}");
-                return View(value);
+                // Tüm kategorileri SelectListItem listesine dönüştürdüm.
+                List<SelectListItem> categoryList = allCategories.Select(c => new SelectListItem
+                {
+                    Text = c.CategoryName,
+                    Value = c.CategoryId.ToString()
+                }).ToList();
+
+                // Ürünü al
+                var product = _productService.TGetByID(id);
+
+                // Kategori ID'si ile mevcut kategoriyi seç.
+                var selectedCategory = categoryList.FirstOrDefault(c => c.Value == product.CategoryId.ToString());
+                if (selectedCategory != null)
+                {
+                    selectedCategory.Selected = true;
+                }
+
+                // Kategori listesini ViewBag ile görünüme taşı.
+                ViewBag.CategoryList = categoryList;
+
+                _logger.LogInformation($"Ürün güncelleme sayfası açıldı: {product.ProductName}");
+                return View(product);
             }
             catch (Exception ex)
             {
-                _logger.LogInformation(ex, "Ürün güncelleme sayfası açılırken bir hata oluştu.");
+                _logger.LogError(ex, "Ürün güncelleme sayfası açılırken bir hata oluştu.");
                 return RedirectToAction("Index");
             }
         }
+        #endregion
 
+
+        #region Update Product POST
         [HttpPost]
         public IActionResult UpdateProduct(Product product)
         {
@@ -174,6 +173,19 @@ namespace Cargomda.UI.Controllers
             {
                 _logger.LogInformation(ex, "Ürün güncelleme işlemi sırasında bir hata oluştu.");
                 return RedirectToAction("Index");
+            }
+        }
+        public IActionResult GetProductsByCategory(int categoryId)
+        {
+            try
+            {
+                var products = _productService.GetProductsByCategory(categoryId);
+                return Json(products);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ürünler getirilirken bir hata oluştu.");
+                return StatusCode(500);
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using Entity.Concrete;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Cargomda.UI.Models
 {
@@ -7,7 +6,6 @@ namespace Cargomda.UI.Models
     {
         public int SelectedCategoryId { get; set; }
         public List<SelectListItem> CategoryList { get; set; }
-        public List<SubCategory> SubCategories { get; set; }
     }
 
 }

@@ -5,6 +5,8 @@ namespace Business.Abstract
     public interface ICategoryService : IGenericService<Category>
     {
         List<Category> GetAllCategories();
+        List<Category> GetSubCategories(int parentCategoryId);
+        List<Category> GetMainCategories();
     }
 }
 

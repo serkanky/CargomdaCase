@@ -1,16 +1,17 @@
 ﻿using Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
 
 namespace Cargomda.UI.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         #region Constructor
 
         //bağımlılık enjeksiyonu UserManager<AppUser> ve ILogger<UsersController>.
-        //ILogger, hata kayıtlarının tutulmasına ve izlenmesine yardımcı olur.
+        //ILogger, hata kayıtlarının tutulmasına ve izlenmesine destek sağlar.
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<UsersController> _logger;
 
